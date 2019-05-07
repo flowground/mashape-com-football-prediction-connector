@@ -1,0 +1,119 @@
+{
+    "title": "Football Prediction",
+    "description": "The Football Prediction API allows developers to get predictions for upcoming football (soccer) matches, results for past matches, and performance monitoring for statistical models.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/mashape.com/football-prediction/2/openapi.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://football-prediction-api.p.mashape.com",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_api_v2_list_federations": {
+            "main": "./lib/actions/get_api_v2_list_federations.js",
+            "title": "Returns an array of all the available federations.",
+            "description": "Returns an array of all the available federations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_v2_list_federations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_v2_list_markets": {
+            "main": "./lib/actions/get_api_v2_list_markets.js",
+            "title": "Returns an array of all the supported prediction markets",
+            "description": "Returns an array of all the supported prediction markets",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_v2_list_markets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_v2_performance_stats": {
+            "main": "./lib/actions/get_api_v2_performance_stats.js",
+            "title": "Returns predictions accuracy in the last 1, 7, 14, 30 days.",
+            "description": "Returns predictions accuracy in the last 1, 7, 14, 30 days.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_v2_performance_stats.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_v2_predictions": {
+            "main": "./lib/actions/get_api_v2_predictions.js",
+            "title": "This endpoint returns by default the next non-expired football predictions. URL parameters can be specified to show specific date in the past or future or to filter by federation and prediction market name.",
+            "description": "This endpoint returns by default the next non-expired football predictions. URL parameters can be specified to show specific date in the past or future or to filter by federation and prediction market name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_v2_predictions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_v2_predictions__id_": {
+            "main": "./lib/actions/get_api_v2_predictions__id_.js",
+            "title": "Returns all predictions available for a match id.",
+            "description": "Returns all predictions available for a match id.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_v2_predictions__id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

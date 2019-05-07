@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "X_Mashape_Key": {
+            "format": "uuid",
+            "type": "string"
+        }
+    }
+}
